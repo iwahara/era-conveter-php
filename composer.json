@@ -1,12 +1,18 @@
 {
     "name": "iwahara/era-conveter",
+    "description": "Convert from Western to Japanese calendar.",
     "type": "library",
     "license": "MIT",
-    "version": "1.0.0",
     "autoload": {
         "psr-4": {
             "Iwahara\\EraConveter\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "files": []
     },
     "authors": [
         {
@@ -16,5 +22,8 @@
     "require": {
         "php": "^7.0 || ^8.0"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    }
 }
