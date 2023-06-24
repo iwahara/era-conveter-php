@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace Iwahara\EraConveter\Wareki;
 
 use DateTimeImmutable;
-use DateTimeInterface;
 use Iwahara\EraConveter\Wareki\WarekiInterface;
-use ReturnTypeWillChange;
 
 class Reiwa implements WarekiInterface
 {
