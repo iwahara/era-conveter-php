@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Iwahara\EraConveter\Wareki;
 
+use DateTimeImmutable;
 use DateTimeInterface;
 use Iwahara\EraConveter\Wareki\WarekiInterface;
 use ReturnTypeWillChange;
@@ -12,11 +13,11 @@ class Reiwa implements WarekiInterface
 {
     use WarekiTrait;
     /**
-     * @var DatetimeInterface
+     * @var DateTimeImmutable
      */
     private $datetime;
 
-    public function __construct(DateTimeInterface $datetime)
+    public function __construct(DateTimeImmutable $datetime)
     {
         $this->datetime = $datetime;
     }
