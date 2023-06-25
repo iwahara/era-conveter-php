@@ -6,7 +6,7 @@ namespace Iwahara\EraConveter\Wareki;
 
 use DateTimeImmutable;
 
-class Taisho implements WarekiInterface
+class Meiji implements WarekiInterface
 {
     use WarekiTrait;
 
@@ -42,12 +42,16 @@ class Taisho implements WarekiInterface
      */
     private function checkTo(int $year, int $month, int $day): bool
     {
-        //大正は15年12月24日まで
-        if ($year > 15) {
+        //明治は45年7月29日まで
+        if ($year > 45) {
             return false;
         }
 
-        if ($year === 15 && $month >= 12 && $day > 24) {
+        if ($year === 45 && $month > 7) {
+            return false;
+        }
+
+        if ($year === 45 && $month === 7 && $day > 29) {
             return false;
         }
 
@@ -61,13 +65,17 @@ class Taisho implements WarekiInterface
      */
     private function checkFrom(int $year, int $month, int $day): bool
     {
-        //大正元年は7月30日から
+        //明治元年は9月8日から
 
         if ($year < 1) {
             return false;
         }
 
-        if ($year === 1 && $month === 7 && $day < 30) {
+        if ($year === 1 && $month < 9) {
+            return false;
+        }
+
+        if ($year === 1 && $month === 9 && $day < 8) {
             return false;
         }
 
@@ -89,7 +97,7 @@ class Taisho implements WarekiInterface
      */
     public function getGengo(): string
     {
-        return '大正';
+        return '明治';
     }
 
     /**
@@ -98,7 +106,7 @@ class Taisho implements WarekiInterface
     public function getYear(): int
     {
         $date = getdate($this->datetime->getTimestamp());
-        return $date['year'] - 1911;
+        return $date['year'] - 1867;
     }
 
     /**
