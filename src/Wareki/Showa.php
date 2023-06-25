@@ -69,6 +69,9 @@ class Showa implements WarekiInterface
         if ($year < 1) {
             return false;
         }
+        if ($year === 1 && $month < 12) {
+            return false;
+        }
 
         if ($year === 1 && $month === 12 && $day < 25) {
             return false;

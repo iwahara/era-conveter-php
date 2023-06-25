@@ -26,18 +26,39 @@ class Reiwa implements WarekiInterface
     public function resolve(): bool
     {
         //令和は2019/05/01から
-        if ($this->getYear() < 1) {
+        if (!$this->checkFrom($this->getYear(), $this->getMonth(), $this->getDay())) {
             return false;
         }
-        //2020年以降は確実に令和（今のところ）
-        if ($this->getYear() > 1) {
-            return true;
+        if (!$this->checkTo($this->getYear(), $this->getMonth(), $this->getDay())) {
+            return false;
         }
-        //ここから2019年の話
-        if ($this->getMonth() >= 5) {
-            return true;
+
+        return true;
+    }
+
+    private function checkTo(int $year, int $month, int $day): bool
+    {
+        //とりあえず終了日はない
+        return true;
+    }
+
+    /**
+     * 指定日時が元号の開始日以降ならtrue
+     *
+     * @return boolean
+     */
+    private function checkFrom(int $year, int $month, int $day): bool
+    {
+        //令和は2019/05/01から
+
+        if ($year < 1) {
+            return false;
         }
-        return false;
+        if ($year === 1 && $month < 5) {
+            return false;
+        }
+
+        return true;
     }
 
     public function __toString(): string

@@ -67,6 +67,10 @@ class Taisho implements WarekiInterface
             return false;
         }
 
+        if ($year === 1 && $month < 7) {
+            return false;
+        }
+
         if ($year === 1 && $month === 7 && $day < 30) {
             return false;
         }
