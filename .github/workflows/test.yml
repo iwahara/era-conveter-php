@@ -1,0 +1,24 @@
+name: Unit Tests
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version: ['7.4', '8.0']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up PHP ${{ matrix.php-version }}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-version }}
+
+    - name: Install dependencies
+      run: composer install
+
+    - name: Run unit tests with PHP ${{ matrix.php-version }}
+      run: vendor/bin/phpunit --configuration phpunit.xml
