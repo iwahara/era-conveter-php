@@ -65,17 +65,17 @@ class Meiji implements WarekiInterface
      */
     private function checkFrom(int $year, int $month, int $day): bool
     {
-        //明治元年は9月8日から
+        //明治は6年1月1日から(太陽暦を採用したのがこの年からなので)
 
-        if ($year < 1) {
+        if ($year < 6) {
             return false;
         }
 
-        if ($year === 1 && $month < 9) {
+        if ($year === 1 && $month < 1) {
             return false;
         }
 
-        if ($year === 1 && $month === 9 && $day < 8) {
+        if ($year === 1 && $month === 1 && $day < 1) {
             return false;
         }
 

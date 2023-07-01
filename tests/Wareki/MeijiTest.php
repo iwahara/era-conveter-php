@@ -15,7 +15,7 @@ class MeijiTest extends TestCase
      */
     public function test_resolve_今から明治()
     {
-        $datetime = new DateTimeImmutable("1868-09-08 00:00:00");
+        $datetime = new DateTimeImmutable("1873-01-01 00:00:00");
         $reiwa = new Meiji($datetime);
         self::assertTrue($reiwa->resolve());
     }
@@ -23,9 +23,9 @@ class MeijiTest extends TestCase
     /**
      * @test
      */
-    public function test_resolve_まだ慶応()
+    public function test_resolve_まだ明治だけど太陰暦なので対象外()
     {
-        $datetime = new DateTimeImmutable("1868-09-07 00:00:00");
+        $datetime = new DateTimeImmutable("1872-12-31 00:00:00");
         $reiwa = new Meiji($datetime);
         self::assertFalse($reiwa->resolve());
     }

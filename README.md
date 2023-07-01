@@ -22,3 +22,7 @@ echo $wareki->getDay() // 1
 ```
 composer require iwahara/era-conveter
 ```
+
+## 注意
+
+明治5年までは太陰暦使用していたので変換対象外としてます（そのうち対応したい）。
